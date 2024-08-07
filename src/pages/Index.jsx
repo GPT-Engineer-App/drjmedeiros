@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Heart, Newspaper, Camera } from 'lucide-react';
 
 const fadeInVariants = {
@@ -22,9 +23,9 @@ const slideInVariants = {
 };
 
 const Index = () => {
-  const [aboutRef, aboutInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [workRef, workInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [contactRef, contactInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: aboutRef, inView: aboutInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: workRef, inView: workInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: contactRef, inView: contactInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <div className="min-h-screen bg-black text-white">
