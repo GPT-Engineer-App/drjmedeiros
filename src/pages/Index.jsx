@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Heart, Newspaper, Camera } from 'lucide-react';
 
 const fadeInVariants = {
@@ -22,6 +22,10 @@ const slideInVariants = {
 };
 
 const Index = () => {
+  const [aboutRef, aboutInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [workRef, workInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [contactRef, contactInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
     <div className="min-h-screen bg-black text-white">
       <motion.header
@@ -89,6 +93,9 @@ const Index = () => {
         <motion.section
           id="about"
           className="py-20"
+          ref={aboutRef}
+          initial="hidden"
+          animate={aboutInView ? "visible" : "hidden"}
           variants={slideInVariants}
           custom="right"
         >
@@ -124,6 +131,9 @@ const Index = () => {
         <motion.section
           id="work"
           className="py-20"
+          ref={workRef}
+          initial="hidden"
+          animate={workInView ? "visible" : "hidden"}
           variants={slideInVariants}
           custom="left"
         >
@@ -162,6 +172,9 @@ const Index = () => {
         <motion.section
           id="contact"
           className="py-20"
+          ref={contactRef}
+          initial="hidden"
+          animate={contactInView ? "visible" : "hidden"}
           variants={slideInVariants}
           custom="right"
         >
